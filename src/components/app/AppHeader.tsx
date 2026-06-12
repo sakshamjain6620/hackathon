@@ -39,8 +39,10 @@ export default function AppHeader() {
     }
 
     // Determine context
+    const bottomNavRoutes = ['/app/home', '/app/chat', '/app/appointments', '/app/records', '/app/medicines', '/app/profile', '/app'];
+    const isRootNode = bottomNavRoutes.some(route => pathname === route || pathname === '/app');
     const isHome = pathname === '/app/home' || pathname === '/app';
-    const showBack = !isHome;
+    const showBack = !isRootNode;
 
     const getPageTitle = () => {
         if (pathname.includes('/chat')) return 'AI Assistant';
@@ -62,9 +64,11 @@ export default function AppHeader() {
                 </div>
             ) : (
                 <div className="flex items-center gap-3">
-                    <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-                        <ArrowLeft className="h-4 w-4" />
-                    </Button>
+                    {showBack && (
+                        <Button variant="ghost" size="icon" onClick={() => router.back()} className="h-8 w-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                            <ArrowLeft className="h-4 w-4" />
+                        </Button>
+                    )}
                     <h1 className="font-semibold text-lg text-slate-800 dark:text-slate-100">
                         {getPageTitle()}
                     </h1>

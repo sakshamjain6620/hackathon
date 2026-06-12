@@ -144,7 +144,7 @@ export default function AppAppointmentsPage() {
     );
 
     return (
-        <div className="space-y-4 pb-6 w-full max-w-full overflow-hidden">
+        <div className="space-y-4 pb-6 w-full max-w-full">
             {/* Gradient Header Banner */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-teal-500 p-4 text-white shadow-lg w-full max-w-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4" />

@@ -146,7 +146,7 @@ function ConfirmationContent() {
       <div className="sticky top-0 z-30 bg-white/80 backdrop-blur-lg border-b border-slate-100/80">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
           <button
-            onClick={() => router.push('/app/chat')}
+            onClick={() => router.back()}
             className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors group"
           >
             <div className="h-8 w-8 rounded-xl bg-slate-100 group-hover:bg-slate-200 flex items-center justify-center transition-colors">
@@ -160,7 +160,7 @@ function ConfirmationContent() {
           </span>
 
           <Link
-            href="/app/chat"
+            href="/app/home"
             className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors group"
           >
             <div className="h-8 w-8 rounded-xl bg-slate-100 group-hover:bg-slate-200 flex items-center justify-center transition-colors">
