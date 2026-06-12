@@ -30,13 +30,13 @@ export default function AdminAppointmentsPage() {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/admin/appointments', {
+                const res = await fetch('https://backend-hvbb.onrender.com/api/admin/appointments', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
                 const data = await res.json();
-                
+
                 if (data.success) {
                     setAppointments(data.data);
                 } else {
@@ -83,29 +83,26 @@ export default function AdminAppointmentsPage() {
                     <div className="text-xs text-slate-500">{app.appointment_time}</div>
                 </td>
                 <td className="px-6 py-4">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
-                        app.urgency_level === 'emergency' ? 'bg-rose-50 text-rose-700 border-rose-200' :
-                        app.urgency_level === 'urgent' ? 'bg-orange-50 text-orange-700 border-orange-200' :
-                        'bg-slate-100 text-slate-700 border-slate-200'
-                    }`}>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${app.urgency_level === 'emergency' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                            app.urgency_level === 'urgent' ? 'bg-orange-50 text-orange-700 border-orange-200' :
+                                'bg-slate-100 text-slate-700 border-slate-200'
+                        }`}>
                         {app.urgency_level.charAt(0).toUpperCase() + app.urgency_level.slice(1)}
                     </span>
                 </td>
                 <td className="px-6 py-4">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
-                        app.appointment_status === 'confirmed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
-                        app.appointment_status === 'completed' ? 'bg-blue-50 text-blue-700 border-blue-200' :
-                        app.appointment_status === 'cancelled' ? 'bg-rose-50 text-rose-700 border-rose-200' :
-                        'bg-amber-50 text-amber-700 border-amber-200'
-                    }`}>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${app.appointment_status === 'confirmed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                            app.appointment_status === 'completed' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                                app.appointment_status === 'cancelled' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                                    'bg-amber-50 text-amber-700 border-amber-200'
+                        }`}>
                         {app.appointment_status.charAt(0).toUpperCase() + app.appointment_status.slice(1)}
                     </span>
                 </td>
                 <td className="px-6 py-4">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
-                        app.payment_status === 'paid' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
-                        'bg-amber-50 text-amber-700 border-amber-200'
-                    }`}>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${app.payment_status === 'paid' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                            'bg-amber-50 text-amber-700 border-amber-200'
+                        }`}>
                         {app.payment_status.charAt(0).toUpperCase() + app.payment_status.slice(1)}
                     </span>
                 </td>
@@ -123,11 +120,11 @@ export default function AdminAppointmentsPage() {
                     </h1>
                     <p className="text-slate-500 mt-1">View and manage all system appointments.</p>
                 </div>
-                <button 
+                <button
                     onClick={() => setShowPendingModal(true)}
                     className="flex items-center gap-2 px-4 py-2.5 bg-amber-50 text-amber-600 hover:bg-amber-100 font-semibold rounded-xl transition-colors cursor-pointer border border-amber-200"
                 >
-                    <Clock className="h-4 w-4" /> 
+                    <Clock className="h-4 w-4" />
                     Pending Appointments ({pendingAppointments.length})
                 </button>
             </div>
@@ -175,7 +172,7 @@ export default function AdminAppointmentsPage() {
                                 <X className="h-5 w-5 text-slate-500" />
                             </button>
                         </div>
-                        
+
                         <div className="flex-1 overflow-y-auto bg-slate-50/50 p-4">
                             <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                                 <div className="overflow-x-auto">

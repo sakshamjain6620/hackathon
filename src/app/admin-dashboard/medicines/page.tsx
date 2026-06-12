@@ -38,7 +38,7 @@ export default function AdminMedicinesPage() {
         if (!query.trim()) { setPatients([]); return; }
         setSearching(true);
         try {
-            const res = await fetch(`http://localhost:5000/api/admin/patients?search=${encodeURIComponent(query)}`, {
+            const res = await fetch(`https://backend-hvbb.onrender.com/api/admin/patients?search=${encodeURIComponent(query)}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -73,7 +73,7 @@ export default function AdminMedicinesPage() {
 
         setSubmitting(true);
         try {
-            const res = await fetch('http://localhost:5000/api/medicines/allot', {
+            const res = await fetch('https://backend-hvbb.onrender.com/api/medicines/allot', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ patientId: selectedPatient.id, medicines })
