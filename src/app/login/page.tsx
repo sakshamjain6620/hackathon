@@ -23,7 +23,7 @@ type LoginFormValues = zod.infer<typeof loginSchema>;
 
 const DEMO_CREDENTIALS = {
     patient: { email: 'patient@swasthsetu.health', password: 'patient123' },
-    admin:   { email: 'admin@swasthsetu.health',   password: 'admin123'   },
+    admin: { email: 'admin@swasthsetu.health', password: 'admin123' },
 } as const;
 
 export default function LoginPage() {
@@ -44,7 +44,7 @@ export default function LoginPage() {
     const onSubmit = async (values: LoginFormValues) => {
         setIsLoading(true);
         try {
-            const res = await API.post('/auth/login', values);
+            const res = await API.post('https://backend-hvbb.onrender.com//auth/login', values);
             const { token, user } = res.data.data;
 
             setToken(token);
@@ -105,11 +105,10 @@ export default function LoginPage() {
                             <button
                                 type="button"
                                 onClick={() => handleRoleSelect('patient')}
-                                className={`py-3 px-4 rounded-2xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
-                                    activeRole === 'patient'
+                                className={`py-3 px-4 rounded-2xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${activeRole === 'patient'
                                         ? 'bg-blue-50 border-blue-400 text-blue-600 ring-2 ring-blue-200 shadow-sm'
                                         : 'border-slate-200 text-slate-500 bg-slate-50/50 hover:bg-slate-100/80'
-                                }`}
+                                    }`}
                             >
                                 <UserCheck className="h-5 w-5" />
                                 <span>User</span>
@@ -122,11 +121,10 @@ export default function LoginPage() {
                             <button
                                 type="button"
                                 onClick={() => handleRoleSelect('admin')}
-                                className={`py-3 px-4 rounded-2xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
-                                    activeRole === 'admin'
+                                className={`py-3 px-4 rounded-2xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${activeRole === 'admin'
                                         ? 'bg-indigo-50 border-indigo-400 text-indigo-600 ring-2 ring-indigo-200 shadow-sm'
                                         : 'border-slate-200 text-slate-500 bg-slate-50/50 hover:bg-slate-100/80'
-                                }`}
+                                    }`}
                             >
                                 <ShieldCheck className="h-5 w-5" />
                                 <span>Admin</span>
