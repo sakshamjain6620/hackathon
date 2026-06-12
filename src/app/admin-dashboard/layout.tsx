@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/store/useAppStore';
 import AdminSidebar from '@/components/AdminSidebar';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Menu, Activity } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     const { user, token } = useAppStore();
     const [isMounted, setIsMounted] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -30,9 +31,23 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
     }
 
     return (
-        <div className="flex h-screen w-screen bg-slate-100 overflow-hidden font-sans">
-            <AdminSidebar />
-            <main className="flex-1 flex flex-col overflow-y-auto bg-slate-50/50">
+        <div className="flex flex-col lg:flex-row h-[100dvh] w-screen bg-slate-100 overflow-hidden font-sans">
+            {/* Mobile Header */}
+            <div className="lg:hidden flex items-center justify-between bg-slate-900 text-white h-16 px-4 shrink-0 border-b border-slate-800">
+                <span className="font-bold text-lg flex items-center gap-2">
+                    <Activity className="h-5 w-5 text-emerald-500" /> Admin Console
+                </span>
+                <button 
+                    onClick={() => setSidebarOpen(true)}
+                    className="p-2 -mr-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
+                >
+                    <Menu className="h-6 w-6" />
+                </button>
+            </div>
+
+            <AdminSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+            
+            <main className="flex-1 flex flex-col overflow-y-auto bg-slate-50/50 relative">
                 {children}
             </main>
         </div>

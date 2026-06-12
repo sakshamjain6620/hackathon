@@ -181,8 +181,8 @@ export default function AdminMedicinesPage() {
                                 )}
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3 mb-3">
-                                <div className="col-span-2">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                                <div className="md:col-span-2">
                                     <label className="text-xs font-semibold text-slate-500 block mb-1">Medicine Name *</label>
                                     <input value={med.medicineName} onChange={e => updateMed(i, 'medicineName', e.target.value)}
                                         className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-400" placeholder="e.g. Paracetamol, Metformin" />
@@ -214,7 +214,7 @@ export default function AdminMedicinesPage() {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div>
                                     <label className="text-xs font-semibold text-slate-500 block mb-1">Duration (days)</label>
                                     <input type="number" min="1" max="90" value={med.durationDays} onChange={e => updateMed(i, 'durationDays', e.target.value)}

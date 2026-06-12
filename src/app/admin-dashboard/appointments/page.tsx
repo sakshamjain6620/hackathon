@@ -136,7 +136,7 @@ export default function AdminAppointmentsPage() {
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm text-slate-600">
+                        <table className="w-full text-left text-sm text-slate-600 whitespace-nowrap min-w-[800px]">
                             <thead className="bg-slate-50 text-slate-800 font-semibold border-b border-slate-200">
                                 <tr>
                                     <th className="px-6 py-4">ID</th>
@@ -176,7 +176,7 @@ export default function AdminAppointmentsPage() {
                         <div className="flex-1 overflow-y-auto bg-slate-50/50 p-4">
                             <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                                 <div className="overflow-x-auto">
-                                    <table className="w-full text-left text-sm text-slate-600">
+                                    <table className="w-full text-left text-sm text-slate-600 whitespace-nowrap min-w-[800px]">
                                         <thead className="bg-slate-50 text-slate-800 font-semibold border-b border-slate-200">
                                             <tr>
                                                 <th className="px-6 py-3">ID</th>

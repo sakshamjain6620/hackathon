@@ -244,7 +244,7 @@ export default function AdminOverview() {
             {activeTab === 'overview' && (
                 <>
                     {/* Metrics cards */}
-                    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 px-6 animate-stagger">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 px-6 animate-stagger">
                         {overviewCards.map((card, index) => (
                             <div key={index} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
                                 <div className="flex justify-between items-start mb-3">
@@ -379,7 +379,7 @@ export default function AdminOverview() {
                                 <p className="text-[10px] text-slate-400 font-medium">Real-time clinic metrics</p>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             {todayStats.map((card, index) => (
                                 <div 
                                     key={index} 
@@ -414,7 +414,7 @@ export default function AdminOverview() {
                                 <p className="text-[10px] text-slate-400 font-medium">Infrastructure & capacity metrics</p>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             {systemCards.map((card, index) => (
                                 <div 
                                     key={index} 

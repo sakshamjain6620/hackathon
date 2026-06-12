@@ -105,8 +105,8 @@ export default function TodayQueuePage() {
                             {appointments.length} Patients
                         </span>
                     </div>
-                    <div className="p-0">
-                        <table className="w-full text-left text-sm">
+                    <div className="p-0 overflow-x-auto">
+                        <table className="w-full text-left text-sm whitespace-nowrap min-w-[800px]">
                             <thead className="bg-slate-50/50 border-b">
                                 <tr>
                                     <th className="px-5 py-3 font-semibold text-slate-600">Queue #</th>

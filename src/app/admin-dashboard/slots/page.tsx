@@ -233,8 +233,8 @@ export default function SlotManagementPage() {
                 </div>
             )}
 
-            <div className="bg-white rounded-xl border overflow-hidden shadow-sm">
-                <table className="w-full text-left text-sm">
+            <div className="bg-white rounded-xl border overflow-x-auto shadow-sm">
+                <table className="w-full text-left text-sm whitespace-nowrap min-w-[800px]">
                     <thead className="bg-slate-50 border-b">
                         <tr>
                             <th className="p-4 font-semibold text-slate-600">Doctor</th>

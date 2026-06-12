@@ -79,7 +79,7 @@ export default function AdminRevenuePage() {
                             <h3 className="font-semibold text-slate-800">Daily Breakdown</h3>
                         </div>
                         <div className="overflow-x-auto">
-                            <table className="w-full text-left text-sm text-slate-600">
+                            <table className="w-full text-left text-sm text-slate-600 whitespace-nowrap min-w-[600px]">
                                 <thead className="bg-slate-50 text-slate-800 font-semibold border-b border-slate-200">
                                     <tr>
                                         <th className="px-6 py-4">Date</th>

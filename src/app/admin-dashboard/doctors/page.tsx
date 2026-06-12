@@ -207,7 +207,7 @@ export default function AdminDoctorsPage() {
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm text-slate-600">
+                        <table className="w-full text-left text-sm text-slate-600 whitespace-nowrap min-w-[800px]">
                             <thead className="bg-slate-50 text-slate-800 font-semibold border-b border-slate-200">
                                 <tr>
                                     <th className="px-5 py-4">Doctor</th>

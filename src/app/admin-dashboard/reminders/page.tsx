@@ -96,9 +96,9 @@ export default function AdminRemindersPage() {
                 <p className="text-slate-500 mt-1">Select a patient to view their upcoming and pending reminders.</p>
             </div>
 
-            <div className="flex-1 min-h-0 flex gap-6">
+            <div className="flex-1 min-h-0 flex flex-col lg:flex-row gap-6">
                 {/* Left Panel: Patients List */}
-                <div className="w-1/3 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
+                <div className="w-full lg:w-1/3 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col overflow-hidden shrink-0 lg:shrink max-h-[40vh] lg:max-h-none">
                     <div className="p-4 border-b border-slate-100">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -147,7 +147,7 @@ export default function AdminRemindersPage() {
                 </div>
 
                 {/* Right Panel: Reminders List */}
-                <div className="w-2/3 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col overflow-hidden">
+                <div className="w-full lg:w-2/3 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col overflow-hidden min-h-[50vh] lg:min-h-0">
                     {!selectedPatientId ? (
                         <div className="flex-1 flex flex-col items-center justify-center text-slate-400">
                             <Bell className="h-12 w-12 mb-3 text-slate-200" />
