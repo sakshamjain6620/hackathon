@@ -43,7 +43,7 @@ export default function RegisterPage() {
     const onSubmit = async (values: RegisterFormValues) => {
         setIsLoading(true);
         try {
-            const res = await API.post('/api/auth/register', values);
+            const res = await API.post('/auth/register', values);
             const { token, user } = res.data.data;
 
             setToken(token);
