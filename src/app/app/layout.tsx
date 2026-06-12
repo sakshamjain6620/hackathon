@@ -10,13 +10,14 @@ export default function AppLayout({
 }) {
     return (
         <MobileContainer>
-            <div className="flex flex-col h-full min-h-0 bg-background relative">
+            <div className="flex flex-col h-full min-h-0 bg-background">
                 <AppHeader />
-                <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden pb-[120px] px-4 py-4 w-full scrollbar-none">
+                <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-4 w-full scrollbar-none pb-4">
                     {children}
                 </main>
-                <div className="absolute bottom-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none pb-safe">
-                    <div className="pointer-events-auto w-full max-w-sm">
+                {/* Bottom Nav: sits at the bottom of the flex column, never clipped */}
+                <div className="shrink-0 w-full flex justify-center px-4 pb-3 pt-1 bg-gradient-to-t from-background via-background/80 to-transparent">
+                    <div className="w-full max-w-sm">
                         <BottomNav />
                     </div>
                 </div>
