@@ -144,23 +144,23 @@ export default function AppAppointmentsPage() {
     );
 
     return (
-        <div className="space-y-4 pb-6 w-full max-w-full">
+        <div className="space-y-4 pb-6 w-full max-w-full animate-fade-in-up">
             {/* Gradient Header Banner */}
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-teal-500 p-4 text-white shadow-lg w-full max-w-full">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+            <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-5 text-white shadow-xl shadow-indigo-500/20 w-full max-w-full">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full filter blur-xl" />
+                <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-white/5 rounded-full filter blur-xl" />
                 <div className="relative z-10 flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                            <CalendarCheck className="h-4 w-4 shrink-0 text-white/80" />
-                            <span className="text-[11px] font-semibold text-white/75 uppercase tracking-wider">My Appointments</span>
+                        <div className="flex items-center gap-2 mb-1.5">
+                            <CalendarCheck className="h-[18px] w-[18px] shrink-0 text-indigo-100" />
+                            <span className="text-[11px] font-bold text-indigo-100/90 uppercase tracking-widest">My Appointments</span>
                         </div>
-                        <h2 className="text-xl font-bold leading-tight">Your Visits</h2>
-                        <p className="text-xs text-white/75 mt-1">{appointments.length} total &middot; {confirmed.length} confirmed</p>
+                        <h2 className="text-[22px] font-extrabold leading-tight tracking-tight">Your Visits</h2>
+                        <p className="text-[13px] font-medium text-indigo-100 mt-1">{appointments.length} total &middot; {confirmed.length} confirmed</p>
                     </div>
-                    <Button asChild size="sm" className="shrink-0 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white text-xs border border-white/20 rounded-xl shadow-md cursor-pointer">
+                    <Button asChild size="sm" className="shrink-0 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white text-[13px] font-bold border border-white/20 rounded-xl shadow-sm cursor-pointer h-9 px-4 transition-colors">
                         <Link href="/app/chat">
-                            <Sparkles className="h-3.5 w-3.5 mr-1.5" />
+                            <Sparkles className="h-4 w-4 mr-1.5" />
                             Book via AI
                         </Link>
                     </Button>
@@ -169,47 +169,47 @@ export default function AppAppointmentsPage() {
 
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-3 w-full max-w-full">
-                <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-slate-100 min-w-0 flex flex-col items-center justify-center h-24">
-                    <div className="h-8 w-8 rounded-lg bg-blue-50 flex items-center justify-center mx-auto mb-1.5">
-                        <CheckCircle2 className="h-4 w-4 text-blue-500" />
+                <div className="bg-white dark:bg-slate-900 rounded-[20px] p-3 text-center shadow-sm border border-slate-200/60 dark:border-slate-800 min-w-0 flex flex-col items-center justify-center h-24 transition-all hover:shadow-md">
+                    <div className="h-8 w-8 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center mx-auto mb-1.5">
+                        <CheckCircle2 className="h-4 w-4 text-indigo-500" />
                     </div>
-                    <p className="text-lg font-bold text-slate-800 leading-none">{confirmed.length}</p>
-                    <p className="text-[10px] text-slate-400 font-medium mt-1">Confirmed</p>
+                    <p className="text-lg font-extrabold text-slate-800 dark:text-slate-100 leading-none">{confirmed.length}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1.5">Confirmed</p>
                 </div>
-                <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-slate-100 min-w-0 flex flex-col items-center justify-center h-24">
-                    <div className="h-8 w-8 rounded-lg bg-amber-50 flex items-center justify-center mx-auto mb-1.5">
+                <div className="bg-white dark:bg-slate-900 rounded-[20px] p-3 text-center shadow-sm border border-slate-200/60 dark:border-slate-800 min-w-0 flex flex-col items-center justify-center h-24 transition-all hover:shadow-md">
+                    <div className="h-8 w-8 rounded-xl bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center mx-auto mb-1.5">
                         <Clock className="h-4 w-4 text-amber-500" />
                     </div>
-                    <p className="text-lg font-bold text-slate-800 leading-none">{pending.length}</p>
-                    <p className="text-[10px] text-slate-400 font-medium mt-1">Pending</p>
+                    <p className="text-lg font-extrabold text-slate-800 dark:text-slate-100 leading-none">{pending.length}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1.5">Pending</p>
                 </div>
-                <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-slate-100 min-w-0 flex flex-col items-center justify-center h-24">
-                    <div className="h-8 w-8 rounded-lg bg-rose-50 flex items-center justify-center mx-auto mb-1.5">
-                        <XCircle className="h-4 w-4 text-rose-400" />
+                <div className="bg-white dark:bg-slate-900 rounded-[20px] p-3 text-center shadow-sm border border-slate-200/60 dark:border-slate-800 min-w-0 flex flex-col items-center justify-center h-24 transition-all hover:shadow-md">
+                    <div className="h-8 w-8 rounded-xl bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center mx-auto mb-1.5">
+                        <XCircle className="h-4 w-4 text-rose-500" />
                     </div>
-                    <p className="text-lg font-bold text-slate-800 leading-none">{cancelled.length}</p>
-                    <p className="text-[10px] text-slate-400 font-medium mt-1">Cancelled</p>
+                    <p className="text-lg font-extrabold text-slate-800 dark:text-slate-100 leading-none">{cancelled.length}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1.5">Cancelled</p>
                 </div>
             </div>
 
             {/* Tabs / Filter Buttons */}
             <Tabs defaultValue="confirmed" className="w-full flex flex-col">
-                <TabsList className="flex w-full h-12 bg-slate-100/80 p-1 rounded-xl">
-                    <TabsTrigger value="confirmed" className="flex-1 rounded-lg text-xs font-semibold h-full cursor-pointer data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                <TabsList className="flex w-full h-[48px] bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-1.5 rounded-[16px] shadow-sm">
+                    <TabsTrigger value="confirmed" className="flex-1 rounded-[12px] text-[13px] font-bold h-full cursor-pointer data-[state=active]:bg-indigo-50 dark:data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-700 dark:data-[state=active]:text-indigo-300 transition-all">
                         Confirmed {confirmed.length > 0 && `(${confirmed.length})`}
                     </TabsTrigger>
-                    <TabsTrigger value="pending" className="flex-1 rounded-lg text-xs font-semibold h-full cursor-pointer data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                    <TabsTrigger value="pending" className="flex-1 rounded-[12px] text-[13px] font-bold h-full cursor-pointer data-[state=active]:bg-indigo-50 dark:data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-700 dark:data-[state=active]:text-indigo-300 transition-all">
                         Pending {pending.length > 0 && `(${pending.length})`}
                     </TabsTrigger>
-                    <TabsTrigger value="cancelled" className="flex-1 rounded-lg text-xs font-semibold h-full cursor-pointer data-[state=active]:bg-white data-[state=active]:shadow-sm">
+                    <TabsTrigger value="cancelled" className="flex-1 rounded-[12px] text-[13px] font-bold h-full cursor-pointer data-[state=active]:bg-indigo-50 dark:data-[state=active]:bg-indigo-500/20 data-[state=active]:text-indigo-700 dark:data-[state=active]:text-indigo-300 transition-all">
                         Cancelled {cancelled.length > 0 && `(${cancelled.length})`}
                     </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="confirmed" className="mt-4 space-y-4">
+                <TabsContent value="confirmed" className="mt-4 space-y-4 animate-fade-in-up">
                     {confirmed.length === 0
                         ? renderEmpty(
-                              <CheckCircle2 className="h-9 w-9 text-blue-300" />,
+                              <CheckCircle2 className="h-9 w-9 text-indigo-400" />,
                               'No confirmed appointments',
                               'Book a consultation with a specialist.'
                           )
@@ -217,10 +217,10 @@ export default function AppAppointmentsPage() {
                     }
                 </TabsContent>
 
-                <TabsContent value="pending" className="mt-4 space-y-4">
+                <TabsContent value="pending" className="mt-4 space-y-4 animate-fade-in-up">
                     {pending.length === 0
                         ? renderEmpty(
-                              <Clock className="h-9 w-9 text-amber-300" />,
+                              <Clock className="h-9 w-9 text-amber-400" />,
                               'No pending appointments',
                               'Your requested appointments will appear here.'
                           )
@@ -228,10 +228,10 @@ export default function AppAppointmentsPage() {
                     }
                 </TabsContent>
 
-                <TabsContent value="cancelled" className="mt-4 space-y-4">
+                <TabsContent value="cancelled" className="mt-4 space-y-4 animate-fade-in-up">
                     {cancelled.length === 0
                         ? renderEmpty(
-                              <XCircle className="h-9 w-9 text-rose-300" />,
+                              <XCircle className="h-9 w-9 text-rose-400" />,
                               'No cancelled appointments',
                               'Good news! You haven\'t cancelled any appointments.'
                           )

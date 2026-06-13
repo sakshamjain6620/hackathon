@@ -76,96 +76,108 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex-1 flex items-center justify-center py-8 px-4 relative overflow-hidden min-h-0">
-            {/* Background decorations */}
-            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-blue-400/15 to-teal-400/15 rounded-full filter blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-emerald-400/15 to-blue-400/15 rounded-full filter blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-purple-300/10 rounded-full filter blur-2xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="flex-1 overflow-y-auto w-full relative">
+            <div className="min-h-full flex flex-col items-center justify-center py-8 px-4">
+                {/* Animated background shapes */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-indigo-500/12 to-purple-500/8 rounded-full filter blur-3xl animate-float" />
+                <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-gradient-to-br from-orange-400/8 to-rose-400/6 rounded-full filter blur-3xl animate-float-delayed" />
+                <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-gradient-to-br from-violet-400/6 to-indigo-400/4 rounded-full filter blur-2xl animate-float" />
+            </div>
 
-            <div className="w-full max-w-md relative z-10">
-                {/* Logo and title */}
-                <div className="text-center mb-6">
-                    <div className="inline-flex items-center justify-center h-16 w-16 rounded-3xl bg-gradient-to-br from-blue-500 to-teal-500 shadow-lg shadow-blue-200/50 mb-4">
+            <div className="w-full max-w-md relative z-10 animate-fade-in-up">
+                {/* Logo and branding */}
+                <div className="text-center mb-8">
+                    <div className="inline-flex items-center justify-center h-[72px] w-[72px] rounded-[22px] bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 shadow-xl shadow-indigo-500/25 mb-5 relative">
                         <Activity className="h-8 w-8 text-white" />
+                        <div className="absolute inset-0 rounded-[22px] bg-gradient-to-t from-white/10 to-transparent" />
                     </div>
-                    <h1 className="text-2xl font-bold text-slate-800">Welcome Back</h1>
-                    <p className="text-sm text-slate-500 mt-1">Sign in to your SwasthSetu account</p>
+                    <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Welcome back</h1>
+                    <p className="text-[15px] text-slate-500 mt-2 font-medium">Sign in to continue to SwasthSetu</p>
                 </div>
 
-                {/* Card */}
-                <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6">
+                {/* Main card */}
+                <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl shadow-slate-200/60 dark:shadow-none border border-slate-200/60 dark:border-slate-800 p-7">
 
-                    {/* Role quick-select (Patient / Admin only) */}
-                    <div className="mb-5">
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2.5">
-                            Select demo role
+                    {/* Role selector */}
+                    <div className="mb-6">
+                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.12em] mb-3">
+                            Quick Demo Access
                         </p>
                         <div className="grid grid-cols-2 gap-3">
-                            {/* User */}
                             <button
                                 type="button"
                                 onClick={() => handleRoleSelect('patient')}
-                                className={`py-3 px-4 rounded-2xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${activeRole === 'patient'
-                                    ? 'bg-blue-50 border-blue-400 text-blue-600 ring-2 ring-blue-200 shadow-sm'
-                                    : 'border-slate-200 text-slate-500 bg-slate-50/50 hover:bg-slate-100/80'
+                                className={`relative p-4 rounded-2xl border-2 text-left transition-all cursor-pointer group ${activeRole === 'patient'
+                                    ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-950/30 shadow-sm'
+                                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700'
                                     }`}
                             >
-                                <UserCheck className="h-5 w-5" />
-                                <span>User</span>
-                                <span className="text-[9px] font-normal text-current opacity-70">
+                                <div className={`h-10 w-10 rounded-xl flex items-center justify-center mb-3 transition-all ${activeRole === 'patient' ? 'bg-indigo-500 text-white shadow-md shadow-indigo-500/30' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
+                                    <UserCheck className="h-5 w-5" />
+                                </div>
+                                <span className={`text-sm font-bold block ${activeRole === 'patient' ? 'text-indigo-700 dark:text-indigo-300' : 'text-slate-700 dark:text-slate-300'}`}>Patient</span>
+                                <span className="text-[10px] text-slate-400 font-medium mt-0.5 block truncate">
                                     patient@swasthsetu.health
                                 </span>
                             </button>
 
-                            {/* Admin */}
                             <button
                                 type="button"
                                 onClick={() => handleRoleSelect('admin')}
-                                className={`py-3 px-4 rounded-2xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${activeRole === 'admin'
-                                    ? 'bg-indigo-50 border-indigo-400 text-indigo-600 ring-2 ring-indigo-200 shadow-sm'
-                                    : 'border-slate-200 text-slate-500 bg-slate-50/50 hover:bg-slate-100/80'
+                                className={`relative p-4 rounded-2xl border-2 text-left transition-all cursor-pointer group ${activeRole === 'admin'
+                                    ? 'border-indigo-500 bg-indigo-50/50 dark:bg-indigo-950/30 shadow-sm'
+                                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700'
                                     }`}
                             >
-                                <ShieldCheck className="h-5 w-5" />
-                                <span>Admin</span>
-                                <span className="text-[9px] font-normal text-current opacity-70">
+                                <div className={`h-10 w-10 rounded-xl flex items-center justify-center mb-3 transition-all ${activeRole === 'admin' ? 'bg-indigo-500 text-white shadow-md shadow-indigo-500/30' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
+                                    <ShieldCheck className="h-5 w-5" />
+                                </div>
+                                <span className={`text-sm font-bold block ${activeRole === 'admin' ? 'text-indigo-700 dark:text-indigo-300' : 'text-slate-700 dark:text-slate-300'}`}>Admin</span>
+                                <span className="text-[10px] text-slate-400 font-medium mt-0.5 block truncate">
                                     admin@swasthsetu.health
                                 </span>
                             </button>
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                        <div className="space-y-1.5">
-                            <Label htmlFor="email" className="text-xs font-semibold text-slate-600">Email address</Label>
+                    {/* Divider */}
+                    <div className="relative mb-6">
+                        <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200 dark:border-slate-800" /></div>
+                        <div className="relative flex justify-center"><span className="bg-white dark:bg-slate-900 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">or enter manually</span></div>
+                    </div>
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                        <div className="space-y-2">
+                            <Label htmlFor="email" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Email address</Label>
                             <Input
                                 id="email"
                                 type="email"
                                 placeholder="name@example.com"
                                 {...register('email')}
-                                className="bg-slate-50/80 border-slate-200 rounded-xl h-11 text-sm focus:ring-2 focus:ring-blue-200"
+                                className="bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 rounded-xl h-12 text-[14px] font-medium focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all placeholder:text-slate-400"
                             />
                             {errors.email && (
                                 <p className="text-xs text-rose-500 font-medium">{errors.email.message}</p>
                             )}
                         </div>
 
-                        <div className="space-y-1.5">
-                            <Label htmlFor="password" className="text-xs font-semibold text-slate-600">Password</Label>
+                        <div className="space-y-2">
+                            <Label htmlFor="password" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Password</Label>
                             <div className="relative">
                                 <Input
                                     id="password"
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="••••••••"
                                     {...register('password')}
-                                    className="bg-slate-50/80 border-slate-200 rounded-xl h-11 text-sm focus:ring-2 focus:ring-blue-200 pr-10"
+                                    className="bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 rounded-xl h-12 text-[14px] font-medium focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all pr-11 placeholder:text-slate-400"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(v => !v)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                                 >
-                                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                                    {showPassword ? <EyeOff className="h-[18px] w-[18px]" /> : <Eye className="h-[18px] w-[18px]" />}
                                 </button>
                             </div>
                             {errors.password && (
@@ -176,38 +188,39 @@ export default function LoginPage() {
                         <Button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-semibold rounded-2xl h-12 shadow-lg shadow-blue-200/50 cursor-pointer mt-2 transition-all active:scale-[0.98]"
+                            className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold rounded-xl h-[52px] text-[15px] shadow-lg shadow-indigo-500/25 cursor-pointer transition-all active:scale-[0.98] hover:shadow-xl hover:shadow-indigo-500/30"
                         >
                             {isLoading ? (
                                 <span className="flex items-center gap-2">
                                     <Loader2 className="h-4 w-4 animate-spin" />
-                                    Verifying Account...
+                                    Signing in...
                                 </span>
                             ) : (
                                 <span className="flex items-center gap-2">
-                                    <Sparkles className="h-4 w-4" />
                                     Sign In
+                                    <Sparkles className="h-4 w-4" />
                                 </span>
                             )}
                         </Button>
                     </form>
 
-                    {/* Demo note */}
-                    <div className="mt-4 p-3 rounded-2xl bg-slate-50 border border-slate-100">
-                        <p className="text-[10px] text-slate-500 text-center font-medium">
-                            Click a role card above to auto-fill demo credentials, then press Sign In.
+                    {/* Demo hint */}
+                    <div className="mt-5 p-3.5 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-800/20">
+                        <p className="text-[11px] text-indigo-600/80 dark:text-indigo-400/80 text-center font-medium leading-relaxed">
+                            💡 Click a role card above to auto-fill demo credentials
                         </p>
                     </div>
                 </div>
 
                 {/* Footer */}
-                <div className="text-center mt-5 text-xs text-slate-500">
+                <div className="text-center mt-7 text-[14px] text-slate-500">
                     <span>
-                        Don&apos;t have a user account?{' '}
-                        <Link href="/register" className="font-semibold text-blue-600 hover:underline">
-                            Register now
+                        Don&apos;t have an account?{' '}
+                        <Link href="/register" className="font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+                            Create one
                         </Link>
                     </span>
+                </div>
                 </div>
             </div>
         </div>

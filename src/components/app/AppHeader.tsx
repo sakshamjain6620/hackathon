@@ -54,11 +54,11 @@ export default function AppHeader() {
     };
 
     return (
-        <header className="sticky top-0 z-40 w-full glass-panel border-b-0 shadow-sm h-16 flex items-center justify-between px-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shrink-0">
+        <header className="sticky top-0 z-40 w-full backdrop-blur-2xl bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/50 dark:border-slate-800/50 shadow-[0_4px_30px_rgba(0,0,0,0.02)] h-[72px] flex items-center justify-between px-6 shrink-0 transition-all">
             {isHome ? (
                 <div className="flex flex-col">
-                    <span className="text-xs font-medium text-slate-500">Hello,</span>
-                    <h1 className="font-bold text-xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
+                    <span className="text-[11px] font-bold tracking-widest uppercase text-indigo-500/80 dark:text-indigo-400/80 mb-0.5">Welcome</span>
+                    <h1 className="font-extrabold text-[22px] text-slate-800 dark:text-slate-100 tracking-tight leading-none">
                         {user?.name || 'Saksham'}!
                     </h1>
                 </div>
@@ -75,39 +75,39 @@ export default function AppHeader() {
                 </div>
             )}
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
                 {isHome && (
-                    <Button variant="ghost" size="icon" className="relative h-10 w-10 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 text-slate-500 hover:text-primary transition-colors">
-                        <Bell className="h-5 w-5" />
-                        <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-rose-500 border-2 border-white dark:border-slate-800"></span>
+                    <Button variant="ghost" size="icon" className="relative h-11 w-11 rounded-[14px] bg-slate-50 dark:bg-slate-900 shadow-inner border border-slate-200/60 dark:border-slate-800 text-slate-500 hover:text-indigo-600 transition-colors">
+                        <Bell className="h-[22px] w-[22px]" />
+                        <span className="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-rose-500 border-2 border-slate-50 dark:border-slate-900"></span>
                     </Button>
                 )}
 
                 <DropdownMenu>
-                    <DropdownMenuTrigger className="relative h-10 w-10 flex-shrink-0 rounded-full select-none cursor-pointer p-0 overflow-hidden outline-none ring-2 ring-transparent hover:ring-primary/30 transition-all shadow-sm">
-                        <Avatar className="h-10 w-10 flex-shrink-0 border-2 border-white dark:border-slate-800 bg-white overflow-hidden rounded-full">
-                            <AvatarImage src="https://i.pravatar.cc/150?u=saksham" className="object-cover h-10 w-10 rounded-full" />
-                             <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white text-sm font-semibold h-10 w-10 flex items-center justify-center rounded-full">
+                    <DropdownMenuTrigger className="relative h-11 w-11 flex-shrink-0 rounded-[14px] select-none cursor-pointer p-0 overflow-hidden outline-none ring-2 ring-transparent hover:ring-indigo-500/30 transition-all shadow-md">
+                        <Avatar className="h-11 w-11 flex-shrink-0 bg-white overflow-hidden rounded-[14px]">
+                            <AvatarImage src="https://i.pravatar.cc/150?u=saksham" className="object-cover h-11 w-11" />
+                             <AvatarFallback className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white text-sm font-bold h-11 w-11 flex items-center justify-center">
                                  {getInitials('S')}
                              </AvatarFallback>
                         </Avatar>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-56 mt-2 shadow-xl rounded-2xl border-slate-100 dark:border-slate-800 p-2">
-                        <DropdownMenuLabel className="font-normal p-2">
+                    <DropdownMenuContent align="end" className="w-56 mt-3 shadow-2xl shadow-indigo-500/10 rounded-2xl border border-slate-200/60 dark:border-slate-800 p-2">
+                        <DropdownMenuLabel className="font-normal p-2.5">
                             <div className="flex flex-col space-y-1">
-                                <p className="text-sm font-semibold leading-none">{user?.name || 'Saksham'}</p>
-                                <p className="text-xs leading-none text-slate-500 mt-1">{user?.email || 'patient@swasthsetu.com'}</p>
+                                <p className="text-[15px] font-bold leading-none text-slate-800 dark:text-slate-100">{user?.name || 'Saksham'}</p>
+                                <p className="text-xs font-medium leading-none text-slate-500 mt-1">{user?.email || 'patient@swasthsetu.com'}</p>
                             </div>
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator className="bg-slate-100 dark:bg-slate-800" />
                         <DropdownMenuItem className="cursor-pointer rounded-xl p-0">
-                            <Link href="/app/profile" className="w-full flex items-center py-2.5 px-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                                <UserIcon className="mr-3 h-4 w-4 text-slate-500" />
-                                <span className="font-medium text-slate-700 dark:text-slate-300">My Profile</span>
+                            <Link href="/app/profile" className="w-full flex items-center py-3 px-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors text-slate-600 dark:text-slate-300">
+                                <UserIcon className="mr-3 h-[18px] w-[18px]" />
+                                <span className="font-bold text-[13px]">My Profile</span>
                             </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-rose-600 focus:text-rose-600 focus:bg-rose-50 dark:focus:bg-rose-900/20 py-2.5 px-3 rounded-xl mt-1 transition-colors">
-                            <span className="font-medium w-full text-left">Log out</span>
+                        <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-rose-600 focus:text-rose-600 focus:bg-rose-50 dark:focus:bg-rose-900/20 py-3 px-3 rounded-xl mt-1 transition-colors">
+                            <span className="font-bold text-[13px] w-full text-left">Log out</span>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

@@ -16,17 +16,17 @@ export function GradientCard({
 }: GradientCardProps) {
   
   const variants = {
-    primary: "bg-gradient-to-br from-blue-400 to-blue-500 text-white shadow-blue-500/20 border-blue-400/50",
-    secondary: "bg-gradient-to-br from-teal-400 to-emerald-400 text-white shadow-emerald-500/20 border-teal-400/50",
-    accent: "bg-gradient-to-br from-sky-400 to-indigo-500 text-white shadow-indigo-500/20 border-indigo-400/50",
-    purple: "bg-gradient-to-br from-purple-400 to-fuchsia-500 text-white shadow-purple-500/20 border-purple-400/50",
-    glass: "glass-card text-slate-800 dark:text-slate-100",
+    primary: "bg-gradient-to-br from-teal-500/10 to-emerald-500/5 text-slate-800 dark:text-slate-100 border-teal-500/20 shadow-sm",
+    secondary: "bg-gradient-to-br from-blue-500/10 to-indigo-500/5 text-slate-800 dark:text-slate-100 border-blue-500/20 shadow-sm",
+    accent: "bg-gradient-to-br from-indigo-500/10 to-purple-500/5 text-slate-800 dark:text-slate-100 border-indigo-500/20 shadow-sm",
+    purple: "bg-gradient-to-br from-purple-500/10 to-fuchsia-500/5 text-slate-800 dark:text-slate-100 border-purple-500/20 shadow-sm",
+    glass: "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-100/80 dark:border-slate-800 shadow-sm text-slate-800 dark:text-slate-100",
   };
 
   return (
     <div 
       className={cn(
-        "rounded-[1.75rem] shadow-xl overflow-hidden border",
+        "rounded-2xl shadow-sm overflow-hidden border",
         variants[variant],
         noPadding ? "" : "p-5",
         className

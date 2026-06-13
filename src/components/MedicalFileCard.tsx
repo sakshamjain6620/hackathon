@@ -21,7 +21,7 @@ interface MedicalFileCardProps {
 
 export default function MedicalFileCard({ record }: MedicalFileCardProps) {
     return (
-        <div className="glass-card bg-white dark:bg-slate-900 rounded-[1.5rem] p-5 shadow-lg shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 transition-all duration-300">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-100/80 dark:border-slate-800 transition-all duration-300">
             <div className="flex justify-between items-start border-b border-slate-100 dark:border-slate-800 pb-4 mb-4">
                 <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center">

@@ -60,61 +60,66 @@ export default function RegisterPage() {
         }
     };
 
-    return (
-        <div className="flex-1 flex items-center justify-center py-8 px-4 relative overflow-hidden">
-            {/* Background decorations */}
-            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-blue-400/15 to-teal-400/15 rounded-full filter blur-3xl -translate-x-1/3 -translate-y-1/3" />
-            <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-emerald-400/15 to-blue-400/15 rounded-full filter blur-3xl translate-x-1/3 translate-y-1/3" />
+    const inputClass = "bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 rounded-xl h-12 text-[14px] font-medium focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all placeholder:text-slate-400";
 
-            <div className="w-full max-w-lg relative z-10">
+    return (
+        <div className="flex-1 overflow-y-auto w-full relative">
+            <div className="min-h-full flex flex-col items-center justify-center py-8 px-4">
+                {/* Animated background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute -top-40 -right-40 w-[450px] h-[450px] bg-gradient-to-br from-violet-500/10 to-indigo-500/6 rounded-full filter blur-3xl animate-float" />
+                <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] bg-gradient-to-br from-orange-400/8 to-pink-400/5 rounded-full filter blur-3xl animate-float-delayed" />
+            </div>
+
+            <div className="w-full max-w-lg relative z-10 animate-fade-in-up">
                 {/* Header */}
-                <div className="flex items-center justify-between mb-5">
-                    <Button variant="ghost" size="icon" asChild className="rounded-2xl h-10 w-10 bg-white/80 shadow-sm border border-slate-100 cursor-pointer">
+                <div className="flex items-center justify-between mb-6">
+                    <Button variant="ghost" size="icon" asChild className="rounded-xl h-11 w-11 bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50">
                         <Link href="/login">
-                            <ArrowLeft className="h-4 w-4 text-slate-600" />
+                            <ArrowLeft className="h-[18px] w-[18px] text-slate-600" />
                         </Link>
                     </Button>
-                    <div className="flex items-center gap-2">
-                        <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center shadow-md">
+                    <div className="flex items-center gap-3">
+                        <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
                             <Activity className="h-5 w-5 text-white" />
                         </div>
                     </div>
-                    <div className="w-10 h-10" /> {/* Spacer */}
+                    <div className="w-11 h-11" />
                 </div>
 
-                <div className="text-center mb-5">
-                    <h1 className="text-2xl font-bold text-slate-800">Create Account</h1>
-                    <p className="text-sm text-slate-500 mt-1">Register as a patient to get started</p>
+                <div className="text-center mb-6">
+                    <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Create Account</h1>
+                    <p className="text-[15px] text-slate-500 mt-2 font-medium">Join SwasthSetu for smart healthcare</p>
                 </div>
 
                 {/* Card */}
-                <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6">
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                        <div className="grid grid-cols-2 gap-3">
-                            <div className="space-y-1">
-                                <Label htmlFor="name" className="text-xs font-semibold text-slate-600">Full Name</Label>
-                                <Input id="name" placeholder="John Doe" {...register('name')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
-                                {errors.name && <p className="text-[10px] text-rose-500 font-semibold">{errors.name.message}</p>}
+                <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl shadow-slate-200/60 dark:shadow-none border border-slate-200/60 dark:border-slate-800 p-7">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                        {/* Name + Email row */}
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="name" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Full Name</Label>
+                                <Input id="name" placeholder="John Doe" {...register('name')} className={inputClass} />
+                                {errors.name && <p className="text-[11px] text-rose-500 font-semibold">{errors.name.message}</p>}
                             </div>
-
-                            <div className="space-y-1">
-                                <Label htmlFor="email" className="text-xs font-semibold text-slate-600">Email</Label>
-                                <Input id="email" type="email" placeholder="john@example.com" {...register('email')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
-                                {errors.email && <p className="text-[10px] text-rose-500 font-semibold">{errors.email.message}</p>}
+                            <div className="space-y-2">
+                                <Label htmlFor="email" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Email</Label>
+                                <Input id="email" type="email" placeholder="john@example.com" {...register('email')} className={inputClass} />
+                                {errors.email && <p className="text-[11px] text-rose-500 font-semibold">{errors.email.message}</p>}
                             </div>
                         </div>
 
+                        {/* Age + Gender + Phone row */}
                         <div className="grid grid-cols-3 gap-3">
-                            <div className="space-y-1">
-                                <Label htmlFor="age" className="text-xs font-semibold text-slate-600">Age</Label>
-                                <Input id="age" type="number" placeholder="28" {...register('age')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
-                                {errors.age && <p className="text-[10px] text-rose-500 font-semibold">{errors.age.message}</p>}
+                            <div className="space-y-2">
+                                <Label htmlFor="age" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Age</Label>
+                                <Input id="age" type="number" placeholder="28" {...register('age')} className={inputClass} />
+                                {errors.age && <p className="text-[11px] text-rose-500 font-semibold">{errors.age.message}</p>}
                             </div>
-
-                            <div className="space-y-1">
-                                <Label htmlFor="gender" className="text-xs font-semibold text-slate-600">Gender</Label>
+                            <div className="space-y-2">
+                                <Label htmlFor="gender" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Gender</Label>
                                 <Select onValueChange={(val: string | null) => val && setValue('gender', val)}>
-                                    <SelectTrigger className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm">
+                                    <SelectTrigger className={inputClass}>
                                         <SelectValue placeholder="Select" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -123,36 +128,43 @@ export default function RegisterPage() {
                                         <SelectItem value="Other">Other</SelectItem>
                                     </SelectContent>
                                 </Select>
-                                {errors.gender && <p className="text-[10px] text-rose-500 font-semibold">{errors.gender.message}</p>}
+                                {errors.gender && <p className="text-[11px] text-rose-500 font-semibold">{errors.gender.message}</p>}
                             </div>
-
-                            <div className="space-y-1">
-                                <Label htmlFor="phone" className="text-xs font-semibold text-slate-600">Mobile</Label>
-                                <Input id="phone" placeholder="9876543210" {...register('phone')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
-                                {errors.phone && <p className="text-[10px] text-rose-500 font-semibold">{errors.phone.message}</p>}
+                            <div className="space-y-2">
+                                <Label htmlFor="phone" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Mobile</Label>
+                                <Input id="phone" placeholder="9876543210" {...register('phone')} className={inputClass} />
+                                {errors.phone && <p className="text-[11px] text-rose-500 font-semibold">{errors.phone.message}</p>}
                             </div>
                         </div>
 
-                        <div className="space-y-1">
-                            <Label htmlFor="password" className="text-xs font-semibold text-slate-600">Password</Label>
-                            <Input id="password" type="password" placeholder="••••••••" {...register('password')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
-                            {errors.password && <p className="text-[10px] text-rose-500 font-semibold">{errors.password.message}</p>}
+                        {/* Password */}
+                        <div className="space-y-2">
+                            <Label htmlFor="password" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Password</Label>
+                            <Input id="password" type="password" placeholder="••••••••" {...register('password')} className={inputClass} />
+                            {errors.password && <p className="text-[11px] text-rose-500 font-semibold">{errors.password.message}</p>}
                         </div>
 
-                        <div className="space-y-1">
-                            <Label htmlFor="address" className="text-xs font-semibold text-slate-600">Home Address <span className="text-slate-400 font-normal">(optional)</span></Label>
-                            <Input id="address" placeholder="123 Street Name, City" {...register('address')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
+                        {/* Optional fields */}
+                        <div className="relative pt-2">
+                            <div className="absolute inset-x-0 top-0 flex items-center"><div className="w-full border-t border-slate-200 dark:border-slate-800" /></div>
+                            <div className="relative flex justify-center -mt-3"><span className="bg-white dark:bg-slate-900 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Optional</span></div>
                         </div>
 
-                        <div className="space-y-1">
-                            <Label htmlFor="emergencyContact" className="text-xs font-semibold text-slate-600">Emergency Contact <span className="text-slate-400 font-normal">(optional)</span></Label>
-                            <Input id="emergencyContact" placeholder="9876598765" {...register('emergencyContact')} className="bg-slate-50/80 border-slate-200 rounded-xl h-10 text-sm" />
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="address" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Address</Label>
+                                <Input id="address" placeholder="123 Street, City" {...register('address')} className={inputClass} />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="emergencyContact" className="text-[13px] font-semibold text-slate-700 dark:text-slate-300">Emergency Contact</Label>
+                                <Input id="emergencyContact" placeholder="9876598765" {...register('emergencyContact')} className={inputClass} />
+                            </div>
                         </div>
 
                         <Button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-semibold rounded-2xl h-12 shadow-lg shadow-blue-200/50 cursor-pointer mt-2 transition-all active:scale-[0.98]"
+                            className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold rounded-xl h-[52px] text-[15px] shadow-lg shadow-indigo-500/25 cursor-pointer mt-1 transition-all active:scale-[0.98] hover:shadow-xl hover:shadow-indigo-500/30"
                         >
                             {isLoading ? (
                                 <span className="flex items-center gap-2">
@@ -161,8 +173,8 @@ export default function RegisterPage() {
                                 </span>
                             ) : (
                                 <span className="flex items-center gap-2">
-                                    <UserPlus className="h-4 w-4" />
                                     Complete Registration
+                                    <UserPlus className="h-4 w-4" />
                                 </span>
                             )}
                         </Button>
@@ -170,13 +182,14 @@ export default function RegisterPage() {
                 </div>
 
                 {/* Footer */}
-                <div className="text-center mt-5 text-xs text-slate-500">
+                <div className="text-center mt-7 text-[14px] text-slate-500">
                     <span>
                         Already have an account?{' '}
-                        <Link href="/login" className="font-semibold text-blue-600 hover:underline">
-                            Login here
+                        <Link href="/login" className="font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+                            Sign in
                         </Link>
                     </span>
+                </div>
                 </div>
             </div>
         </div>

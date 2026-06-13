@@ -87,7 +87,7 @@ export default function MedicineRoutineTable({ routines, onRefresh }: MedicineRo
     return (
         <div className="space-y-5">
             {/* Today's check-in card */}
-            <div className="bg-white dark:bg-slate-900 rounded-[1.5rem] p-5 shadow-sm border border-slate-100 dark:border-slate-800">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-100/80 dark:border-slate-800">
                 <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
@@ -163,7 +163,7 @@ export default function MedicineRoutineTable({ routines, onRefresh }: MedicineRo
                 const courseProgress = totalDoses > 0 ? Math.round((takenDoses / totalDoses) * 100) : 0;
 
                 return (
-                    <div key={key} className="bg-white dark:bg-slate-900 rounded-[1.5rem] p-5 shadow-sm border border-slate-100 dark:border-slate-800">
+                    <div key={key} className="bg-white dark:bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-100/80 dark:border-slate-800">
                         {/* Medicine header */}
                         <div className="flex items-center justify-between mb-4">
                             <div>

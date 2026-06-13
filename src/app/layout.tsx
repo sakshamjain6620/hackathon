@@ -29,7 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-[100dvh] overflow-hidden antialiased`}
     >
-      <body className="h-[100dvh] overflow-hidden flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 gradient-bg">
+      <body className="h-[100dvh] overflow-hidden flex flex-col bg-slate-50/50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
         <QueryProvider>
           <main className="flex-1 flex flex-col min-h-0 relative z-10">
             {children}

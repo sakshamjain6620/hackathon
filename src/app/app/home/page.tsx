@@ -45,10 +45,10 @@ export default function AppHomePage() {
     };
 
     const quickActions = [
-        { name: 'AI Chat', icon: MessageSquare, href: '/app/chat', color: 'text-blue-500 bg-blue-50 dark:bg-blue-900/30' },
-        { name: 'Records', icon: FolderHeart, href: '/app/records', color: 'text-purple-500 bg-purple-50 dark:bg-purple-900/30' },
-        { name: 'Medicines', icon: Pill, href: '/app/medicines', color: 'text-amber-500 bg-amber-50 dark:bg-amber-900/30' },
-        { name: 'Payments', icon: Activity, href: '/app/appointments', color: 'text-emerald-500 bg-emerald-50 dark:bg-emerald-900/30' },
+        { name: 'AI Chat', icon: MessageSquare, href: '/app/chat', color: 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10 shadow-indigo-500/10' },
+        { name: 'Records', icon: FolderHeart, href: '/app/records', color: 'text-violet-600 bg-violet-50 dark:bg-violet-500/10 shadow-violet-500/10' },
+        { name: 'Medicines', icon: Pill, href: '/app/medicines', color: 'text-orange-500 bg-orange-50 dark:bg-orange-500/10 shadow-orange-500/10' },
+        { name: 'Visits', icon: Calendar, href: '/app/appointments', color: 'text-teal-600 bg-teal-50 dark:bg-teal-500/10 shadow-teal-500/10' },
     ];
 
     const specializations = [
@@ -95,46 +95,51 @@ export default function AppHomePage() {
     return (
         <div className="space-y-6">
             {/* Search Bar */}
-            <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+            <div className="relative group">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                 <Input 
-                    placeholder="Search doctor, medicines, articles..." 
-                    className="w-full pl-12 h-14 rounded-2xl bg-white dark:bg-slate-900 border-none shadow-sm shadow-slate-200/50 dark:shadow-none text-base placeholder:text-slate-400 focus-visible:ring-primary/20"
+                    placeholder="Search doctors, medicines, articles..." 
+                    className="w-full pl-12 h-[52px] rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 shadow-sm shadow-slate-200/50 dark:shadow-none text-[15px] font-medium placeholder:text-slate-400 placeholder:font-normal focus-visible:ring-2 focus-visible:ring-indigo-500/20 focus-visible:border-indigo-500 transition-all"
                 />
             </div>
 
             {/* Quick Actions Grid */}
             <div className="grid grid-cols-4 gap-3">
                 {quickActions.map((action) => (
-                    <Link key={action.name} href={action.href} className="flex flex-col items-center gap-2 group">
-                        <div className={`h-14 w-14 rounded-2xl ${action.color} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm`}>
+                    <Link key={action.name} href={action.href} className="flex flex-col items-center gap-2.5 group">
+                        <div className={`h-[60px] w-[60px] rounded-[18px] ${action.color} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm`}>
                             <action.icon className="h-6 w-6" />
                         </div>
-                        <span className="text-[11px] font-semibold text-slate-600 dark:text-slate-300">{action.name}</span>
+                        <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300">{action.name}</span>
                     </Link>
                 ))}
             </div>
 
             {/* Health Summary Banner */}
-            <GradientCard variant="primary" noPadding className="flex items-center overflow-hidden">
-                <div className="p-5 flex-1 relative z-10">
-                    <h3 className="text-white/90 font-medium text-sm mb-1">Health Status</h3>
-                    <p className="text-2xl font-bold text-white mb-3">All Good!</p>
-                    <div className="flex gap-4">
-                        <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-md">
-                            <HeartPulse className="h-4 w-4 text-white" />
-                            <span className="text-sm font-semibold text-white">72 bpm</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-md">
-                            <Droplets className="h-4 w-4 text-white" />
-                            <span className="text-sm font-semibold text-white">B+</span>
+            <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-5 shadow-xl shadow-indigo-500/20 text-white animate-fade-in-up">
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/10 rounded-full filter blur-xl" />
+                <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-white/5 rounded-full filter blur-xl" />
+                
+                <div className="relative z-10 flex items-center">
+                    <div className="flex-1">
+                        <h3 className="text-white/80 font-bold text-[11px] uppercase tracking-wider mb-1">Health Status</h3>
+                        <p className="text-[26px] font-extrabold text-white mb-4 leading-none">All Good!</p>
+                        <div className="flex gap-3">
+                            <div className="flex items-center gap-2 bg-white/20 px-3 py-2 rounded-xl backdrop-blur-md border border-white/10 shadow-sm">
+                                <HeartPulse className="h-4 w-4 text-rose-200" />
+                                <span className="text-[13px] font-bold text-white">72 bpm</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-white/20 px-3 py-2 rounded-xl backdrop-blur-md border border-white/10 shadow-sm">
+                                <Droplets className="h-4 w-4 text-blue-200" />
+                                <span className="text-[13px] font-bold text-white">B+</span>
+                            </div>
                         </div>
                     </div>
+                    <div className="relative w-28 h-full opacity-60 mix-blend-overlay flex items-center justify-center">
+                        <Activity className="h-28 w-28 text-white drop-shadow-2xl" strokeWidth={1.5} />
+                    </div>
                 </div>
-                <div className="relative w-32 h-full opacity-50 mix-blend-overlay flex items-center justify-center">
-                    <Activity className="h-32 w-32 absolute -right-6 text-white" strokeWidth={1} />
-                </div>
-            </GradientCard>
+            </div>
 
             {/* Specializations */}
             <div>

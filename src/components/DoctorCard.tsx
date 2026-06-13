@@ -36,8 +36,8 @@ export default function DoctorCard({ doctor, onBook, compact = false }: DoctorCa
 
     return (
         <div className={cn(
-            "glass-card bg-white dark:bg-slate-900 rounded-[1.5rem] p-4 flex flex-col transition-all duration-300",
-            !compact && "shadow-lg shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800"
+            "bg-white dark:bg-slate-900 rounded-[1.5rem] p-4 flex flex-col transition-all duration-300",
+            !compact && "shadow-sm border border-slate-100/80 dark:border-slate-800"
         )}>
             <div className="flex gap-4">
                 <div className="relative">
@@ -98,7 +98,7 @@ export default function DoctorCard({ doctor, onBook, compact = false }: DoctorCa
                     {onBook && (
                         <Button 
                             onClick={() => onBook(doctor)} 
-                            className="w-full mt-4 bg-primary hover:bg-primary/90 text-white rounded-xl shadow-md shadow-primary/25 h-11"
+                            className="w-full mt-4 bg-teal-600 hover:bg-teal-700 text-white rounded-xl shadow-sm h-11"
                         >
                             Select Doctor
                         </Button>

@@ -19,7 +19,7 @@ export default function BottomNav() {
     ];
 
     return (
-        <div className="glass-card rounded-[2rem] px-3 py-2 flex items-center justify-between shadow-xl shadow-blue-900/5 dark:shadow-none border border-white/40 dark:border-white/10 mx-2">
+        <div className="backdrop-blur-2xl bg-white/80 dark:bg-slate-900/80 border border-white/50 dark:border-slate-700/50 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-[2.5rem] px-3 py-2.5 flex items-center justify-between mx-auto max-w-sm relative">
             {navItems.map((item) => {
                 const isActive = pathname.startsWith(item.path);
                 return (
@@ -27,24 +27,24 @@ export default function BottomNav() {
                         key={item.path}
                         href={item.path}
                         className={cn(
-                            "relative flex flex-col items-center justify-center w-[3.25rem] h-[3.25rem] rounded-2xl transition-all duration-300",
+                            "relative flex flex-col items-center justify-center w-[3.5rem] h-[3.5rem] rounded-[1.25rem] transition-all duration-300 gap-1 z-10",
                             isActive 
-                                ? "text-primary bg-primary/10" 
-                                : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                                ? "text-indigo-600 bg-indigo-50/80 dark:bg-indigo-500/20 dark:text-indigo-300 shadow-sm shadow-indigo-100 dark:shadow-none" 
+                                : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
                         )}
                     >
                         <item.icon className={cn(
-                            "h-[1.125rem] w-[1.125rem] mb-1 transition-all duration-300", 
-                            isActive ? "stroke-[2.5px] scale-110" : "stroke-2"
+                            "h-5 w-5 transition-all duration-300", 
+                            isActive ? "stroke-[2.5px] scale-110" : "stroke-[1.5px]"
                         )} />
                         <span className={cn(
                             "text-[9px] tracking-tight transition-all duration-200",
-                            isActive ? "font-semibold opacity-100" : "font-medium opacity-80"
+                            isActive ? "font-bold opacity-100" : "font-medium opacity-80"
                         )}>
                             {item.name}
                         </span>
                         {isActive && (
-                            <span className="absolute -bottom-1 w-1 h-1 rounded-full bg-primary animate-in zoom-in" />
+                            <span className="absolute -bottom-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 animate-in zoom-in" />
                         )}
                     </Link>
                 );

@@ -12,7 +12,7 @@ export default function AppLayout({
         <MobileContainer>
             <div className="flex flex-col h-full min-h-0 bg-background relative">
                 <AppHeader />
-                <main className="flex-1 flex flex-col min-h-0 overflow-y-auto overflow-x-hidden w-full scrollbar-none px-4 pt-4 pb-[100px]">
+                <main className="flex-1 flex flex-col min-h-0 overflow-y-auto overflow-x-hidden w-full scrollbar-none px-4 pt-4 pb-32">
                     {children}
                 </main>
                 <div className="absolute bottom-6 left-0 right-0 z-[100] flex justify-center px-4 pointer-events-none">

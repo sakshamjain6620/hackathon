@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/store/useAppStore';
 import API from '@/lib/api';
 import { toast } from 'sonner';
-import { Send, Sparkles, User, CalendarDays, CreditCard, Bot, Stethoscope, ChevronRight } from 'lucide-react';
+import { Send, Sparkles, User, CalendarDays, CreditCard, Bot, Stethoscope, ChevronRight, Paperclip } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -353,26 +353,29 @@ export default function AIChatBox({ className }: { className?: string }) {
     };
 
     return (
-        <div className={cn("flex flex-col flex-1 min-h-0 bg-slate-50/50 dark:bg-slate-900/10 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none overflow-hidden relative", className)}>
-            {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-6 py-4 flex items-center justify-between shadow-sm z-10 shrink-0">
+        <div className={cn("flex flex-col flex-1 min-h-0 bg-[#F9FAFB] dark:bg-slate-950 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-2xl shadow-slate-300/30 dark:shadow-none overflow-hidden relative", className)}>
+            {/* Floating Glass Header */}
+            <div className="absolute top-0 inset-x-0 z-20 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-4 flex items-center justify-between shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
                 <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-inner">
-                        <Sparkles className="h-5 w-5 drop-shadow-sm" />
+                    <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-teal-500 to-blue-500 flex items-center justify-center text-white shadow-md shadow-teal-500/20">
+                        <Sparkles className="h-5 w-5" />
                     </div>
                     <div>
-                        <h2 className="font-bold text-[15px] leading-none flex items-center gap-2 drop-shadow-sm">
-                            Foundry AI 
-                            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                        <h2 className="font-bold text-[15px] text-slate-800 dark:text-slate-100 leading-none flex items-center gap-2">
+                            Swasthya AI 
+                            <span className="relative flex h-2.5 w-2.5 ml-1">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
+                            </span>
                         </h2>
-                        <span className="text-[10px] text-blue-100 font-medium">Smart Healthcare Agent</span>
+                        <span className="text-[11px] text-slate-500 font-medium">Always here to help</span>
                     </div>
                 </div>
             </div>
 
             {/* Message Pane */}
-            <ScrollArea className="flex-1 min-h-0 p-4 md:p-6 bg-transparent">
-                <div className="space-y-6 max-w-3xl mx-auto pb-6">
+            <ScrollArea className="flex-1 min-h-0 bg-transparent">
+                <div className="space-y-6 max-w-3xl mx-auto pt-24 pb-32 px-4 md:px-6">
                     {chatMessages.map((msg, index) => (
                         <div key={index} className="flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-2 duration-300">
                             <div className={cn("flex items-end gap-3", msg.sender === 'user' ? "flex-row-reverse" : "flex-row")}>
@@ -380,16 +383,16 @@ export default function AIChatBox({ className }: { className?: string }) {
                                     {msg.sender === 'user' ? (
                                         <ProfileAvatar name={user?.name || 'User'} size="sm" />
                                     ) : (
-                                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 flex items-center justify-center text-white shadow-sm shadow-teal-500/20">
                                             <Bot className="h-4 w-4" />
                                         </div>
                                     )}
                                 </div>
                                 <div className={cn(
-                                    "p-4 rounded-[1.5rem] max-w-[85%] text-[13.5px] leading-relaxed shadow-sm transition-all relative overflow-hidden",
+                                    "p-4 max-w-[85%] text-[14px] leading-relaxed shadow-sm transition-all relative overflow-hidden",
                                     msg.sender === 'user'
-                                        ? "bg-gradient-to-br from-blue-500 via-indigo-500 to-indigo-600 text-white rounded-br-sm shadow-blue-500/20"
-                                        : "bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm text-slate-800 dark:text-slate-100 rounded-bl-sm border border-slate-100 dark:border-slate-700/50"
+                                        ? "bg-gradient-to-br from-teal-500 to-emerald-500 text-white rounded-[1.5rem] rounded-tr-sm shadow-teal-500/10 font-medium"
+                                        : "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 rounded-[1.5rem] rounded-tl-sm border border-slate-200/60 dark:border-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
                                 )}>
                                     {msg.sender === 'user' && (
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
@@ -400,26 +403,25 @@ export default function AIChatBox({ className }: { className?: string }) {
 
                             {/* Render Inline Interfaces depending on the Action Hint */}
                             {msg.sender === 'ai' && msg.actionHint === 'select_doctor' && msg.data?.recommendedDoctors && (
-                                <div className="ml-11 mr-4 mt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                <div className="ml-11 mr-4 mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl animate-in fade-in slide-in-from-bottom-2 duration-500">
                                     {msg.data.recommendedDoctors.map((doc: any) => (
-                                        <div key={doc.id} className="p-4 rounded-[1.5rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm flex flex-col gap-3 group hover:border-blue-300 dark:hover:border-blue-500/50 transition-all">
-                                            <div className="flex gap-3">
-                                                <ProfileAvatar name={doc.name} size="md" />
+                                        <div key={doc.id} className="p-5 rounded-3xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col gap-4 group hover:border-teal-500/30 hover:shadow-teal-500/5 transition-all">
+                                            <div className="flex gap-4">
+                                                <ProfileAvatar name={doc.name} size="lg" className="h-12 w-12 rounded-2xl shadow-sm" />
                                                 <div className="min-w-0 flex-1">
-                                                    <h4 className="font-bold text-slate-800 dark:text-slate-100 text-sm truncate">Dr. {doc.name}</h4>
-                                                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate">{doc.specialization}</p>
-                                                    <p className="text-[10px] text-slate-400 mt-0.5">{doc.experience} Years Exp.</p>
+                                                    <h4 className="font-bold text-slate-800 dark:text-slate-100 text-[15px] truncate leading-tight">Dr. {doc.name}</h4>
+                                                    <p className="text-[12px] text-teal-600 dark:text-teal-400 font-semibold truncate mt-0.5">{doc.specialization}</p>
+                                                    <p className="text-[11px] text-slate-400 mt-1 flex items-center gap-1"><Sparkles className="h-3 w-3 text-amber-400" /> {doc.experience} Years Exp</p>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100 dark:border-slate-700/50">
-                                                <div className="flex items-center gap-1 text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2.5 py-1 rounded-md">
-                                                    <Stethoscope className="h-3 w-3" />
+                                            <div className="flex items-center justify-between mt-auto pt-3 border-t border-slate-100 dark:border-slate-800/50">
+                                                <div className="flex items-center gap-1.5 text-[13px] font-black text-slate-700 dark:text-slate-300">
                                                     ₹{doc.fee}
                                                 </div>
                                                 <Button 
                                                     size="sm" 
                                                     onClick={() => handleSelectDoctor(doc)}
-                                                    className="bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200 text-white rounded-lg h-8 text-xs px-4"
+                                                    className="bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 text-white rounded-xl h-9 text-xs px-5 font-semibold shadow-sm"
                                                 >
                                                     Select
                                                 </Button>
@@ -430,12 +432,14 @@ export default function AIChatBox({ className }: { className?: string }) {
                             )}
 
                             {msg.sender === 'ai' && msg.actionHint === 'select_slot' && booking.selectedDoctor && (
-                                <div className="ml-11 mr-4 mt-2 p-4 rounded-[1.5rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm max-w-sm space-y-4">
-                                    <div className="flex items-center gap-3 border-b border-slate-100 dark:border-slate-700 pb-3">
-                                        <CalendarDays className="h-5 w-5 text-primary" />
+                                <div className="ml-11 mr-4 mt-2 p-5 rounded-3xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_4px_20px_rgba(0,0,0,0.03)] max-w-sm space-y-5 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                    <div className="flex items-center gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                                        <div className="h-12 w-12 rounded-2xl bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center text-teal-600">
+                                            <CalendarDays className="h-6 w-6" />
+                                        </div>
                                         <div>
-                                            <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 leading-tight">Pick a Date & Time</h4>
-                                            <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Dr. {booking.selectedDoctor.name}</span>
+                                            <h4 className="font-bold text-[15px] text-slate-800 dark:text-slate-100 leading-tight">Pick a Date & Time</h4>
+                                            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Dr. {booking.selectedDoctor.name}</span>
                                         </div>
                                     </div>
                                     
@@ -495,36 +499,41 @@ export default function AIChatBox({ className }: { className?: string }) {
                             )}
 
                             {msg.sender === 'ai' && msg.actionHint === 'patient_form' && (
-                                <form onSubmit={handleFormSubmit} className="ml-11 mr-4 mt-2 p-5 rounded-[1.5rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm max-w-sm space-y-4">
-                                    <div className="border-b border-slate-100 dark:border-slate-700 pb-3">
-                                        <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100">Patient Details</h4>
-                                        <p className="text-[10px] text-slate-500">Please verify information for booking</p>
-                                    </div>
-                                    <div className="space-y-3">
+                                <form onSubmit={handleFormSubmit} className="ml-11 mr-4 mt-2 p-5 rounded-3xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_4px_20px_rgba(0,0,0,0.03)] max-w-sm space-y-5 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                    <div className="flex items-center gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                                        <div className="h-12 w-12 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+                                            <User className="h-6 w-6" />
+                                        </div>
                                         <div>
-                                            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Full Name</label>
-                                            <Input name="name" defaultValue={user?.name || ''} className="h-10 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 focus-visible:ring-primary/20" />
+                                            <h4 className="font-bold text-[15px] text-slate-800 dark:text-slate-100 leading-tight">Patient Details</h4>
+                                            <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Please verify information</span>
+                                        </div>
+                                    </div>
+                                    <div className="space-y-4">
+                                        <div>
+                                            <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Full Name</label>
+                                            <Input name="name" defaultValue={user?.name || ''} className="h-11 text-[13px] font-medium rounded-xl bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-teal-500/20" />
                                         </div>
                                         <div className="grid grid-cols-2 gap-3">
                                             <div>
-                                                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Age</label>
-                                                <Input name="age" placeholder="e.g. 28" className="h-10 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 focus-visible:ring-primary/20" />
+                                                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Age</label>
+                                                <Input name="age" placeholder="e.g. 28" className="h-11 text-[13px] font-medium rounded-xl bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-teal-500/20" />
                                             </div>
                                             <div>
-                                                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Gender</label>
-                                                <Input name="gender" placeholder="e.g. Male" className="h-10 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 focus-visible:ring-primary/20" />
+                                                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Gender</label>
+                                                <Input name="gender" placeholder="e.g. Male" className="h-11 text-[13px] font-medium rounded-xl bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-teal-500/20" />
                                             </div>
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Mobile Number</label>
-                                            <Input name="phone" defaultValue={user?.phone || ''} className="h-10 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 focus-visible:ring-primary/20" />
+                                            <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Mobile Number</label>
+                                            <Input name="phone" defaultValue={user?.phone || ''} className="h-11 text-[13px] font-medium rounded-xl bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-teal-500/20" />
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Email Address</label>
-                                            <Input name="email" type="email" defaultValue={user?.email || ''} className="h-10 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 focus-visible:ring-primary/20" />
+                                            <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">Email Address</label>
+                                            <Input name="email" type="email" defaultValue={user?.email || ''} className="h-11 text-[13px] font-medium rounded-xl bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-teal-500/20" />
                                         </div>
                                     </div>
-                                    <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs h-11 rounded-xl shadow-md shadow-blue-500/20">
+                                    <Button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 text-white font-bold text-[13px] h-12 rounded-xl shadow-md transition-all active:scale-[0.98]">
                                         Confirm Details
                                     </Button>
                                 </form>
@@ -537,41 +546,43 @@ export default function AIChatBox({ className }: { className?: string }) {
                             )}
 
                             {msg.sender === 'ai' && msg.actionHint === 'checkout_payment' && booking.pendingAppointment && (
-                                <div className="ml-11 mr-4 mt-2 p-5 rounded-[1.5rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm max-w-sm space-y-4">
-                                    <div className="flex items-center gap-3 border-b border-slate-100 dark:border-slate-700 pb-3">
-                                        <div className="h-10 w-10 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-500">
-                                            <CreditCard className="h-5 w-5" />
+                                <div className="ml-11 mr-4 mt-2 p-1 rounded-3xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_4px_20px_rgba(0,0,0,0.03)] max-w-sm animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                    <div className="p-5 flex items-center gap-4 border-b border-slate-100 dark:border-slate-800">
+                                        <div className="h-12 w-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-500">
+                                            <CreditCard className="h-6 w-6" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 leading-tight">Payment Summary</h4>
-                                            <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Complete booking</span>
+                                            <h4 className="font-bold text-[15px] text-slate-800 dark:text-slate-100 leading-tight">Booking Summary</h4>
+                                            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Review and pay</span>
                                         </div>
                                     </div>
                                     
-                                    <div className="space-y-3 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
-                                        <div className="flex justify-between items-center text-xs">
-                                            <span className="text-slate-500 font-medium">Consultation Fee</span>
-                                            <span className="font-bold text-slate-800 dark:text-slate-200">₹{booking.selectedDoctor?.fee}</span>
+                                    <div className="p-5 pt-4 space-y-4">
+                                        <div className="bg-slate-50/50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100/80 dark:border-slate-800 space-y-3">
+                                            <div className="flex justify-between items-center text-[13px]">
+                                                <span className="text-slate-500 font-medium">Consultation Fee</span>
+                                                <span className="font-bold text-slate-800 dark:text-slate-200">₹{booking.selectedDoctor?.fee}</span>
+                                            </div>
+                                            <div className="flex justify-between items-center text-[13px]">
+                                                <span className="text-slate-500 font-medium">Doctor</span>
+                                                <span className="font-bold text-slate-800 dark:text-slate-200">Dr. {booking.selectedDoctor?.name}</span>
+                                            </div>
+                                            <div className="flex justify-between items-center text-[13px]">
+                                                <span className="text-slate-500 font-medium">Slot</span>
+                                                <span className="font-bold text-teal-600 bg-teal-50 dark:bg-teal-900/30 px-2.5 py-1 rounded-lg">{booking.selectedSlot}</span>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center text-xs">
-                                            <span className="text-slate-500 font-medium">Doctor</span>
-                                            <span className="font-bold text-slate-800 dark:text-slate-200">Dr. {booking.selectedDoctor?.name}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center text-xs">
-                                            <span className="text-slate-500 font-medium">Slot</span>
-                                            <span className="font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 px-2 py-1 rounded-md border border-slate-200 dark:border-slate-700">{booking.selectedSlot}</span>
-                                        </div>
-                                    </div>
 
-                                    <Button 
-                                        onClick={handleCheckout} 
-                                        className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold text-xs h-12 rounded-xl shadow-lg shadow-emerald-500/20 group flex items-center justify-between px-5"
-                                    >
-                                        <span>Pay ₹{booking.selectedDoctor?.fee}</span>
-                                        <div className="bg-white/20 p-1.5 rounded-lg group-hover:bg-white/30 transition-colors">
-                                            <ChevronRight className="h-4 w-4" />
-                                        </div>
-                                    </Button>
+                                        <Button 
+                                            onClick={handleCheckout} 
+                                            className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 text-white font-bold text-[14px] h-14 rounded-2xl shadow-md group flex items-center justify-between px-6 transition-all active:scale-[0.98]"
+                                        >
+                                            <span>Pay ₹{booking.selectedDoctor?.fee}</span>
+                                            <div className="bg-white/20 dark:bg-black/10 p-1.5 rounded-xl group-hover:translate-x-1 transition-transform">
+                                                <ChevronRight className="h-5 w-5" />
+                                            </div>
+                                        </Button>
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -580,13 +591,13 @@ export default function AIChatBox({ className }: { className?: string }) {
                     {/* AI typing state */}
                     {isTyping && (
                         <div className="flex items-end gap-3 animate-in fade-in duration-300">
-                            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0 mb-1">
+                            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 flex items-center justify-center text-white shadow-md shadow-teal-500/20 shrink-0 mb-1">
                                 <Bot className="h-4 w-4" />
                             </div>
-                            <div className="p-4 py-5 rounded-[1.5rem] bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-100 dark:border-slate-700/50 rounded-bl-sm flex items-center gap-1.5 shadow-sm">
-                                <span className="h-2 w-2 rounded-full bg-indigo-400 dark:bg-indigo-500 animate-bounce" style={{ animationDelay: '0ms' }} />
-                                <span className="h-2 w-2 rounded-full bg-indigo-400 dark:bg-indigo-500 animate-bounce" style={{ animationDelay: '150ms' }} />
-                                <span className="h-2 w-2 rounded-full bg-indigo-400 dark:bg-indigo-500 animate-bounce" style={{ animationDelay: '300ms' }} />
+                            <div className="px-5 py-4 rounded-[1.5rem] rounded-tl-sm bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 flex items-center gap-1.5 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+                                <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600 animate-bounce" style={{ animationDelay: '0ms' }} />
+                                <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600 animate-bounce" style={{ animationDelay: '150ms' }} />
+                                <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600 animate-bounce" style={{ animationDelay: '300ms' }} />
                             </div>
                         </div>
                     )}
@@ -594,21 +605,24 @@ export default function AIChatBox({ className }: { className?: string }) {
                 </div>
             </ScrollArea>
 
-            {/* Input Form Bar */}
-            <div className="p-4 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl border-t border-slate-100/50 dark:border-slate-800/50 z-10 shrink-0 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
-                <form onSubmit={handleSendMessage} className="flex gap-2 items-center bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-full p-1.5 pr-2 focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-400 transition-all shadow-sm">
+            {/* Input Form Pill */}
+            <div className="absolute bottom-6 inset-x-0 px-4 md:px-8 z-20 pointer-events-none flex justify-center">
+                <form onSubmit={handleSendMessage} className="pointer-events-auto flex gap-2 items-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-full p-2 pl-5 focus-within:ring-4 focus-within:ring-teal-500/15 focus-within:border-teal-400/50 transition-all shadow-[0_8px_30px_rgba(0,0,0,0.08)] w-full max-w-3xl">
+                    <button type="button" className="text-slate-400 hover:text-teal-600 transition-colors shrink-0 flex items-center justify-center group">
+                        <Paperclip className="h-[22px] w-[22px] group-hover:scale-110 transition-transform" />
+                    </button>
                     <Input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        placeholder="Describe symptoms, or type 'cancel' to restart..."
+                        placeholder="Describe your symptoms to Swasthya AI..."
                         disabled={isTyping}
-                        className="flex-1 bg-transparent border-none h-11 px-4 text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none font-medium placeholder:text-slate-400"
+                        className="flex-1 bg-transparent border-none h-12 px-3 text-[15px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none font-medium placeholder:text-slate-400 placeholder:font-normal"
                     />
                     <Button 
                         type="submit" 
                         disabled={isTyping || !input.trim()}
                         size="icon" 
-                        className="bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-full shrink-0 h-11 w-11 transition-transform hover:scale-105 active:scale-95 shadow-md shadow-blue-500/25 cursor-pointer disabled:opacity-50 disabled:hover:scale-100"
+                        className="bg-teal-500 hover:bg-teal-600 text-white rounded-full shrink-0 h-[42px] w-[42px] transition-all hover:scale-105 active:scale-95 shadow-md shadow-teal-500/25 cursor-pointer disabled:opacity-50 disabled:hover:scale-100"
                     >
                         <Send className="h-[18px] w-[18px] ml-0.5" />
                     </Button>

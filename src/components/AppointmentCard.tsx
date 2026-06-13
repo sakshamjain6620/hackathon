@@ -41,20 +41,20 @@ export default function AppointmentCard({ app, onAction, onViewDetails }: Appoin
     return (
         <div
             className={cn(
-                'bg-white dark:bg-slate-900 rounded-2xl p-4 flex flex-col gap-3 border w-full box-border overflow-hidden',
+                'bg-white dark:bg-slate-900 rounded-[24px] p-5 flex flex-col gap-4 border w-full box-border overflow-hidden transition-all',
                 isPast
-                    ? 'opacity-80 border-slate-100 dark:border-slate-800'
-                    : 'shadow-sm border-slate-100 dark:border-slate-800'
+                    ? 'opacity-80 border-slate-200/50 dark:border-slate-800'
+                    : 'shadow-[0_4px_24px_rgba(0,0,0,0.03)] border-slate-200/60 dark:border-slate-800 hover:border-indigo-500/30'
             )}
         >
             {/* Top: Doctor Info + Status */}
             <div className="flex items-center gap-3 w-full min-w-0">
                 <ProfileAvatar name={doctorName} src={app.doctor_avatar} size="md" className="shrink-0" />
                 <div className="flex flex-col flex-1 min-w-0">
-                    <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100 truncate">
+                    <h4 className="font-extrabold text-[15px] text-slate-800 dark:text-slate-100 truncate">
                         {doctorName}
                     </h4>
-                    <span className="text-xs text-slate-500 font-medium truncate">
+                    <span className="text-[13px] text-slate-500 font-semibold truncate">
                         {app.doctor_specialization || 'Specialist'}
                     </span>
                 </div>
@@ -64,20 +64,20 @@ export default function AppointmentCard({ app, onAction, onViewDetails }: Appoin
             </div>
 
             {/* Date Time Fee row */}
-            <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 rounded-xl px-3 py-2.5 border border-slate-100 dark:border-slate-700/50 w-full min-w-0">
-                <div className="flex flex-col gap-1 min-w-0 flex-1">
+            <div className="flex items-center justify-between bg-slate-50/80 dark:bg-slate-800/50 rounded-2xl px-4 py-3 border border-slate-200/50 dark:border-slate-700/50 w-full min-w-0">
+                <div className="flex flex-col gap-1.5 min-w-0 flex-1">
                     <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 min-w-0">
-                        <Calendar className="h-3.5 w-3.5 text-blue-500 shrink-0" />
-                        <span className="text-xs font-semibold truncate">{dateLabel}</span>
+                        <Calendar className="h-[14px] w-[14px] text-indigo-500 shrink-0" />
+                        <span className="text-[13px] font-bold truncate">{dateLabel}</span>
                     </div>
                     <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 min-w-0">
-                        <Clock className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                        <span className="text-xs font-semibold truncate">{app.appointment_time || 'Pending'}</span>
+                        <Clock className="h-[14px] w-[14px] text-emerald-500 shrink-0" />
+                        <span className="text-[13px] font-bold truncate">{app.appointment_time || 'Pending'}</span>
                     </div>
                 </div>
-                <div className="flex flex-col items-end shrink-0 ml-2">
-                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Fee</span>
-                    <span className="text-base font-black text-slate-800 dark:text-slate-100 leading-none">₹{amount}</span>
+                <div className="flex flex-col items-end shrink-0 ml-3">
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Fee</span>
+                    <span className="text-lg font-black text-indigo-600 dark:text-indigo-400 leading-none">₹{amount}</span>
                 </div>
             </div>
 
@@ -95,9 +95,9 @@ export default function AppointmentCard({ app, onAction, onViewDetails }: Appoin
             {app.appointment_status === 'pending' && onAction && (
                 <Button
                     onClick={() => onAction(app.id)}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-10 shadow-sm font-semibold text-xs"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-[14px] h-11 shadow-md shadow-emerald-500/20 font-bold text-[13px] transition-all active:scale-[0.98]"
                 >
-                    <CreditCard className="h-3.5 w-3.5 mr-1.5" />
+                    <CreditCard className="h-4 w-4 mr-1.5" />
                     Pay & Confirm
                 </Button>
             )}
@@ -107,10 +107,10 @@ export default function AppointmentCard({ app, onAction, onViewDetails }: Appoin
                 <Button
                     variant="outline"
                     onClick={() => onViewDetails(app.id)}
-                    className="w-full border-slate-200 dark:border-slate-700 rounded-xl h-10 font-semibold text-xs mt-1"
+                    className="w-full border border-slate-200/60 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-[14px] h-11 font-bold text-[13px] text-slate-600 dark:text-slate-300 transition-all mt-1"
                 >
                     View Details
-                    <ChevronRight className="h-3.5 w-3.5 ml-1" />
+                    <ChevronRight className="h-4 w-4 ml-1.5 opacity-50" />
                 </Button>
             )}
         </div>

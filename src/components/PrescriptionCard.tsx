@@ -59,7 +59,7 @@ export default function PrescriptionCard({ prescription }: PrescriptionCardProps
     };
 
     return (
-        <Card className="glass-card hover:translate-y-0 border border-slate-100 bg-white/70 shadow-xs">
+        <Card className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md hover:translate-y-0 border border-slate-100/80 dark:border-slate-800 shadow-sm rounded-2xl">
             <CardContent className="p-6 space-y-5">
                 {/* Header */}
                 <div className="flex justify-between items-start border-b pb-3.5">
