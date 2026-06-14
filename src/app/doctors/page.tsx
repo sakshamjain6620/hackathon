@@ -32,7 +32,7 @@ export default function DoctorsPage() {
     }, []);
 
     // Filter categories
-    const specializations = ['All', 'General Physician', 'Cardiologist', 'ENT Specialist', 'Dermatologist', 'Orthopedic Surgeon', 'Pediatrician'];
+    const specializations = ['All', 'General Physician', 'Cardiologist', 'ENT Specialist', 'Dermatologist', 'Orthopedic Surgeon', 'Pediatrician', 'Physiotherapist'];
 
     const filteredDoctors = doctors.filter(d => {
         const matchSpec = selectedSpecialization === 'All' || d.specialization === selectedSpecialization;

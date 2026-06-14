@@ -403,9 +403,9 @@ export default function AIChatBox({ className }: { className?: string }) {
 
                             {/* Render Inline Interfaces depending on the Action Hint */}
                             {msg.sender === 'ai' && msg.actionHint === 'select_doctor' && msg.data?.recommendedDoctors && (
-                                <div className="ml-11 mr-4 mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                <div className="ml-11 mr-4 mt-2 flex overflow-x-auto gap-4 pb-4 snap-x max-w-full hide-scrollbar animate-in fade-in slide-in-from-bottom-2 duration-500">
                                     {msg.data.recommendedDoctors.map((doc: any) => (
-                                        <div key={doc.id} className="p-5 rounded-3xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col gap-4 group hover:border-teal-500/30 hover:shadow-teal-500/5 transition-all">
+                                        <div key={doc.id} className="min-w-[260px] shrink-0 snap-start p-5 rounded-3xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col gap-4 group hover:border-teal-500/30 hover:shadow-teal-500/5 transition-all">
                                             <div className="flex gap-4">
                                                 <ProfileAvatar name={doc.name} size="lg" className="h-12 w-12 rounded-2xl shadow-sm" />
                                                 <div className="min-w-0 flex-1">

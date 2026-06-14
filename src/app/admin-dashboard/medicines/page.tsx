@@ -73,7 +73,7 @@ export default function AdminMedicinesPage() {
 
         setSubmitting(true);
         try {
-            const res = await fetch('https://backend-hvbb.onrender.com/api/medicines/allot', {
+            const res = await fetch(`https://backend-hvbb.onrender.com/api/medicines/allot`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ patientId: selectedPatient.id, medicines })

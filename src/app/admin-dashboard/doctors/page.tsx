@@ -45,7 +45,7 @@ const DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 const SPECIALIZATIONS = [
     'General Physician', 'Cardiologist', 'Dermatologist', 'ENT Specialist',
     'Orthopedic Surgeon', 'Pediatrician', 'Neurologist', 'Gynecologist',
-    'Psychiatrist', 'Ophthalmologist', 'Urologist', 'Pulmonologist'
+    'Psychiatrist', 'Ophthalmologist', 'Urologist', 'Pulmonologist', 'Physiotherapist'
 ];
 
 const emptyForm = {
@@ -71,7 +71,7 @@ export default function AdminDoctorsPage() {
 
     const fetchDoctors = useCallback(async () => {
         try {
-            const res = await fetch('https://backend-hvbb.onrender.com/api/doctors', {
+            const res = await fetch(`https://backend-hvbb.onrender.com/api/doctors`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -142,7 +142,7 @@ export default function AdminDoctorsPage() {
                 avatarUrl: form.avatarUrl || null, status: form.status
             };
             const url = showModal === 'add'
-                ? 'https://backend-hvbb.onrender.com/api/doctors'
+                ? `https://backend-hvbb.onrender.com/api/doctors`
                 : `https://backend-hvbb.onrender.com/api/doctors/${selectedDoctor!.id}`;
             const method = showModal === 'add' ? 'POST' : 'PUT';
 

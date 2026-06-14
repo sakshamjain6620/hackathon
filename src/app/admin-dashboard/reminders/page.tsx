@@ -34,7 +34,7 @@ export default function AdminRemindersPage() {
     const fetchPatients = async () => {
         setLoadingPatients(true);
         try {
-            const res = await fetch('https://backend-hvbb.onrender.com/api/admin/patients', {
+            const res = await fetch(`https://backend-hvbb.onrender.com/api/admin/patients`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await res.json();

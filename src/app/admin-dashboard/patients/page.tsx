@@ -37,7 +37,7 @@ export default function AdminPatientsPage() {
         try {
             const url = query 
                 ? `https://backend-hvbb.onrender.com/api/admin/patients?search=${encodeURIComponent(query)}`
-                : 'https://backend-hvbb.onrender.com/api/admin/patients';
+                : `https://backend-hvbb.onrender.com/api/admin/patients`;
                 
             const res = await fetch(url, {
                 headers: {
