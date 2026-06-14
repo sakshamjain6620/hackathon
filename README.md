@@ -1,36 +1,238 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🩺 SwasthSetu – AI Powered Healthcare Assistant
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge\&logo=next.js)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=for-the-badge\&logo=node.js)
+![SQLite](https://img.shields.io/badge/Database-SQLite-blue?style=for-the-badge)
+![AI](https://img.shields.io/badge/AI-Groq-purple?style=for-the-badge)
+![Twilio](https://img.shields.io/badge/WhatsApp-Twilio-success?style=for-the-badge)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Bridging the gap between patients and healthcare using AI
+
+</div>
+
+---
+
+## 📌 Overview
+
+SwasthSetu is an AI-powered healthcare platform that enables users to describe symptoms in natural language and instantly receive intelligent guidance, doctor recommendations, appointment booking, medicine reminders, and WhatsApp notifications.
+
+The platform combines conversational AI with healthcare automation to make medical assistance faster, smarter, and more accessible.
+
+---
+
+# ✨ Features
+
+## 🤖 AI Symptom Analysis
+
+* Natural language symptom understanding
+* AI-generated health summaries
+* Disease probability suggestions
+* Recommended medical specialty
+
+## 👨‍⚕️ Smart Doctor Discovery
+
+* Find doctors based on symptoms
+* View doctor profiles
+* Availability management
+* Instant appointment booking
+
+## 📅 Appointment Management
+
+* Online appointment scheduling
+* Appointment history
+* Booking confirmation
+* Automated reminders
+
+## 💬 WhatsApp Integration
+
+* Appointment confirmations
+* Medicine reminders
+* Health notifications
+* Powered by Twilio API
+
+## 💳 Secure Payments
+
+* Razorpay payment integration
+* Appointment payment support
+
+## 👤 Authentication
+
+* Patient Registration
+* Secure Login
+* JWT Authentication
+* Protected APIs
+
+## 📊 Admin Panel
+
+* Doctor management
+* Patient management
+* Appointment monitoring
+* Analytics dashboard
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Shadcn/UI
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* SQLite
+
+### AI
+
+* Groq API
+
+### Messaging
+
+* Twilio WhatsApp API
+
+### Payments
+
+* Razorpay
+
+---
+
+# 📂 Project Structure
+
+```
+SwasthSetu/
+
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── controllers/
+│   ├── routes/
+│   ├── middleware/
+│   ├── database/
+│   ├── services/
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 🚀 Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Clone Repository
 
-## Learn More
+```bash
+git clone https://github.com/yourusername/swasthsetu.git
 
-To learn more about Next.js, take a look at the following resources:
+cd swasthsetu
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+cd backend
 
-## Deploy on Vercel
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside the backend directory.
+
+```
+PORT=5000
+
+JWT_SECRET=your_secret
+
+GROQ_API_KEY=your_key
+
+TWILIO_ACCOUNT_SID=your_sid
+
+TWILIO_AUTH_TOKEN=your_token
+
+TWILIO_WHATSAPP_NUMBER=your_number
+
+RAZORPAY_KEY_ID=your_key
+
+RAZORPAY_KEY_SECRET=your_secret
+```
+
+---
+
+# 🌐 Deployment
+
+### Frontend
+
+* Vercel
+
+### Backend
+
+* Render
+
+---
+
+# 📸 Key Modules
+
+* AI Health Chat
+* Doctor Recommendation
+* Appointment Booking
+* Medicine Reminder
+* WhatsApp Notifications
+* Patient Dashboard
+* Admin Dashboard
+
+---
+
+# 🎯 Future Enhancements
+
+* Voice-based AI consultation
+* Video doctor appointments
+* Health report analysis
+* Multi-language support
+* Electronic Health Records (EHR)
+* AI-powered medicine recommendations
+
+---
+
+# 👨‍💻 Team
+
+Developed for healthcare innovation and hackathon projects.
+
+**Project Name:** SwasthSetu
+
+*"Connecting patients and healthcare through Artificial Intelligence."*
+
+---
+
+## ⭐ Support
+
+If you like this project, don't forget to ⭐ star the repository and contribute!
+
+Made with ❤️ using Next.js, Express, AI and Twilio.
